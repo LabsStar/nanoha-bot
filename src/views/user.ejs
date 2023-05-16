@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>
+        <%= discord_client.user.username %> - User
+    </title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="<%= discord_client.user.username %> Bot - User">
+    <meta property="og:title" content="<%= discord_client.user.username %> Bot - User">
+    <meta property="og:description" content="Check out <%= user.username %>'s profile on the #1 Discord Anime bot!">
+    <meta property="og:image" content="<%= user.banner %>" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="<%= discord_client.user.username %> Bot - User">
+    <meta name="twitter:creator" content="@Nanoha_Live">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta content="<%= user.color %>" data-react-helmet="true" name="theme-color" />
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+
+    <!-- Reponsive -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+
+<body class="body header-fixed is_dark connect-wal">
+
+    <!-- preloade -->
+    <div class="preload preload-container">
+        <div class="preload-logo"></div>
+    </div>
+    <!-- /preload -->
+
+    <div id="wrapper">
+        <div id="page" class="clearfix">
+            <%- include ("./__templates__/header.ejs") %>
+                <!-- /#site-header -->
+
+                <!-- title page -->
+                <section class="flat-title-page inner">
+                    <div class="overlay"></div>
+                    <div class="themesflat-container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="page-title-heading mg-bt-12">
+                                    <h1 class="heading text-center">
+                                        <%= user.username %>
+                                    </h1>
+                                </div>
+                                <div class="breadcrumbs">
+                                    <ul>
+                                        <li><a href="/">Home</a></li>
+                                        <li>
+                                            <%= user.username %>'s Profile
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="tf-section authors">
+                    <div class="themesflat-container">
+                        <div class="flat-tabs tab-authors">
+                            <div class="author-profile flex"
+                                style="background: url('<%= user.banner %>') no-repeat center center / cover;">
+                                <div class="feature-profile">
+                                    <img src="<%= user.avatar %>" alt="Image" class="avatar">
+                                </div>
+                                <div class="infor-profile">
+                                    <span>
+                                        <%= user.username %> <i style="color: #dcddde; opacity: 0.8; font-size: 0.8em;">
+                                                <%= user.pronouns %>
+                                            </i>
+                                            <h2 class="title">
+                                                <%= user.displayName || user.username %>
+                                            </h2>
+                                            <p class="content">
+                                                <%= user.bio %>
+                                            </p>
+                                </div>
+                            </div>
+                            <ul class="menu-tab flex">
+                                <li class="tablinks active" style="font-size: 1.5rem;">Watching</li>
+                                <li class="tablinks" style="font-size: 1.5rem;">Completed</li>
+                                <li class="tablinks" style="font-size: 1.5rem;">On Hold</li>
+                                <li class="tablinks" style="font-size: 1.5rem;">Dropped</li>
+                                <li class="tablinks" style="font-size: 1.5rem;">Plan to Watch</li>
+                            </ul>
+                            <div class="content-tab">
+                                <div class="content-inner">
+                                    <div class="row">
+                                        <% watching_anime.forEach(watching=> { %>
+                                            <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+                                                <div class="sc-card-product explode ">
+                                                    <div class="card-media active">
+                                                        <a href="/anime/<%= watching.id %>"><img
+                                                                src="<%= watching.picture %>"
+                                                                alt="<%= watching.title %>"></a>
+                                                    </div>
+                                                    <div class="card-title mg-bt-16">
+                                                        <h5><a href="/anime/<%= watching.id %>">
+                                                                <%= watching.title %>
+                                                            </a></h5>
+                                                    </div>
+                                                    <div class="meta-info">
+                                                        <div class="author">
+                                                            <div class="avatar">
+                                                                <img src="<%= watching.characters[0].picture %>"
+                                                                    alt="<%= watching.characters[0].name %>">
+                                                            </div>
+                                                            <div class="info">
+                                                                <span>
+                                                                    <%= watching.characters[0].role %>
+                                                                </span>
+                                                                <h6> <a href="<%= watching.characters[0].link %>">
+                                                                        <%= watching.characters[0].name %>
+                                                                    </a> </h6>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tags">
+                                                            <%= watching.type %>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-bottom style-explode">
+                                                        <div class="price">
+                                                            <span>Rating</span>
+                                                            <div class="price-details">
+                                                                <h5>
+                                                                    <%= watching.rating %>
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% }) %>
+                                    </div>
+                                </div>
+                                <div class="content-inner">
+                                    <div class="row">
+                                        <% completed_anime.forEach(completed=> { %>
+                                            <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+                                                <div class="sc-card-product explode ">
+                                                    <div class="card-media active">
+                                                        <a href="/anime/<%= completed.id %>"><img
+                                                                src="<%= completed.picture %>"
+                                                                alt="<%= completed.title %>"></a>
+                                                    </div>
+                                                    <div class="card-title mg-bt-16">
+                                                        <h5><a href="/anime/<%= completed.id %>">
+                                                                <%= completed.title %>
+                                                            </a></h5>
+                                                    </div>
+                                                    <div class="meta-info">
+                                                        <div class="author">
+                                                            <div class="avatar">
+                                                                <img src="<%= completed.characters[0].picture %>"
+                                                                    alt="<%= completed.characters[0].name %>">
+                                                            </div>
+                                                            <div class="info">
+                                                                <span>
+                                                                    <%= completed.characters[0].role %>
+                                                                </span>
+                                                                <h6> <a href="<%= completed.characters[0].link %>">
+                                                                        <%= completed.characters[0].name %>
+                                                                    </a> </h6>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tags">
+                                                            <%= completed.type %>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-bottom style-explode">
+                                                        <div class="price">
+                                                            <span>Rating</span>
+                                                            <div class="price-details">
+                                                                <h5>
+                                                                    <%= completed.rating %>
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% }) %>
+                                    </div>
+                                </div>
+                                <div class="content-inner">
+                                    <div class="row">
+                                        <% dropped_anime.forEach(dropped=> { %>
+                                            <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+                                                <div class="sc-card-product explode ">
+                                                    <div class="card-media active">
+                                                        <a href="/anime/<%= dropped.id %>"><img
+                                                                src="<%= dropped.picture %>"
+                                                                alt="<%= dropped.title %>"></a>
+                                                    </div>
+                                                    <div class="card-title mg-bt-16">
+                                                        <h5><a href="/anime/<%= dropped.id %>">
+                                                                <%= dropped.title %>
+                                                            </a></h5>
+                                                    </div>
+                                                    <div class="meta-info">
+                                                        <div class="author">
+                                                            <div class="avatar">
+                                                                <img src="<%= dropped.characters[0].picture %>"
+                                                                    alt="<%= dropped.characters[0].name %>">
+                                                            </div>
+                                                            <div class="info">
+                                                                <span>
+                                                                    <%= dropped.characters[0].role %>
+                                                                </span>
+                                                                <h6> <a href="<%= dropped.characters[0].link %>">
+                                                                        <%= dropped.characters[0].name %>
+                                                                    </a> </h6>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tags">
+                                                            <%= dropped.type %>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-bottom style-explode">
+                                                        <div class="price">
+                                                            <span>Rating</span>
+                                                            <div class="price-details">
+                                                                <h5>
+                                                                    <%= dropped.rating %>
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% }) %>
+                                    </div>
+                                </div>
+                                <div class="content-inner">
+                                    <div class="row">
+                                        <% on_hold_anime.forEach(on_hold=> { %>
+                                            <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+                                                <div class="sc-card-product explode ">
+                                                    <div class="card-media active">
+                                                        <a href="/anime/<%= on_hold.id %>"><img
+                                                                src="<%= on_hold.picture %>"
+                                                                alt="<%= on_hold.title %>"></a>
+                                                    </div>
+                                                    <div class="card-title mg-bt-16">
+                                                        <h5><a href="/anime/<%= on_hold.id %>">
+                                                                <%= on_hold.title %>
+                                                            </a></h5>
+                                                    </div>
+                                                    <div class="meta-info">
+                                                        <div class="author">
+                                                            <div class="avatar">
+                                                                <img src="<%= on_hold.characters[0].picture %>"
+                                                                    alt="<%= on_hold.characters[0].name %>">
+                                                            </div>
+                                                            <div class="info">
+                                                                <span>
+                                                                    <%= on_hold.characters[0].role %>
+                                                                </span>
+                                                                <h6> <a href="<%= on_hold.characters[0].link %>">
+                                                                        <%= on_hold.characters[0].name %>
+                                                                    </a> </h6>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tags">
+                                                            <%= on_hold.type %>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-bottom style-explode">
+                                                        <div class="price">
+                                                            <span>Rating</span>
+                                                            <div class="price-details">
+                                                                <h5>
+                                                                    <%= on_hold.rating %>
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% }) %>
+                                    </div>
+                                </div>
+                                <div class="content-inner">
+                                    <div class="row">
+                                        <% plan_to_watch_anime.forEach(plan_to_watch=> { %>
+                                            <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+                                                <div class="sc-card-product explode ">
+                                                    <div class="card-media active">
+                                                        <a href="/anime/<%= plan_to_watch.id %>"><img
+                                                                src="<%= plan_to_watch.picture %>"
+                                                                alt="<%= plan_to_watch.title %>"></a>
+                                                    </div>
+                                                    <div class="card-title mg-bt-16">
+                                                        <h5><a href="/anime/<%= plan_to_watch.id %>">
+                                                                <%= plan_to_watch.title %>
+                                                            </a></h5>
+                                                    </div>
+                                                    <div class="meta-info">
+                                                        <div class="author">
+                                                            <div class="avatar">
+                                                                <img src="<%= plan_to_watch.characters[0].picture %>"
+                                                                    alt="<%= plan_to_watch.characters[0].name %>">
+                                                            </div>
+                                                            <div class="info">
+                                                                <span>
+                                                                    <%= plan_to_watch.characters[0].role %>
+                                                                </span>
+                                                                <h6> <a href="<%= plan_to_watch.characters[0].link %>">
+                                                                        <%= plan_to_watch.characters[0].name %>
+                                                                    </a> </h6>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tags">
+                                                            <%= plan_to_watch.type %>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-bottom style-explode">
+                                                        <div class="price">
+                                                            <span>Rating</span>
+                                                            <div class="price-details">
+                                                                <h5>
+                                                                    <%= plan_to_watch.rating %>
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% }) %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- Footer -->
+                <%- include ("./__templates__/footer.ejs") %><!-- /#footer -->
+                    <!-- Bottom -->
+        </div><!-- /#bottom -->
+        <!-- /#wrapper -->
+
+        <!-- Javascript -->
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/js/main.js"></script>
+        <script src="/assets/js/jquery.easing.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+        <script src="/assets/js/wow.min.js"></script>
+        <script src="/assets/js/plugin.js"></script>
+        <script src="/assets/js/count-down.js"></script>
+        <script src="/assets/js/shortcodes.js"></script>
+        <script src="/assets/js/swiper-bundle.min.js"></script>
+        <script src="/assets/js/swiper.js"></script>
+        <script src="/assets/js/web3.min.js"></script>
+        <script src="/assets/js/moralis.js"></script>
+        <script src="/assets/js/nft.js"></script>
+
+</body>
+
+</html>

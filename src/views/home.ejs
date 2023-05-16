@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title><%= discord_client.user.username %> - Home</title>
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    
+    <meta property="og:type" content="website">
+	<meta property="og:site_name" content="<%= discord_client.user.username %> Bot - Home">
+	<meta property="og:title" content="<%= discord_client.user.username %> Bot - Home">
+	<meta property="og:description" content="Check out our website for more information about <%= discord_client.user.username %> Bot!">
+	<meta property="og:image" content="https://media.tenor.com/ulII6Uq-F-AAAAAd/takamachi-nanoha-tranfomation.gif">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="<%= discord_client.user.username %> Bot - Home">
+	<meta name="twitter:creator" content="@Nanoha_Live">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta content="#43B581" data-react-helmet="true" name="theme-color" />
+
+</head>
+
+<body class="body home7-style header-fixed is_dark">
+    <!-- preloade -->
+    <div class="preload preload-container">
+        <div class="preload-logo"></div>
+    </div>
+    <!-- /preload -->
+
+    <div id="wrapper">
+        <div id="page" class="clearfix">
+            <%- include ("./__templates__/header.ejs") %>
+            <!-- Header -->              
+            <!-- title page -->
+            <section class="flat-title-page style3">
+                <div class="overlay"></div>
+                <div class="swiper-container mainslider home auctions">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="slider-item">	
+                                <div class="themesflat-container ">
+                                    <div class="wrap-heading flat-slider flex">
+                                        <div class="content">
+                                            <h2 class="heading m-t-15">Discover, find,
+                                            </h2>	
+                                            <h1 class="heading mb-style"><span class="tf-text s1">View extraordinary</span>                                   
+                                            </h1>
+                                            <h1 class="heading">Animes </h1>
+                                            <p class="sub-heading mg-t-19 mg-bt-40">Explore the world of anime and manga</p>
+                                            </p>
+                                            <div class="flat-bt-slider flex style2">
+                                                <a href="/invite" class="sc-button header-slider fl-button pri-1 bi bi-download"><span>Invite
+                                                </span></a>
+                                            </div>
+                                        </div>
+                                        <div class="wrap-image">
+                                            <div class="overlay-style2"></div>
+                                            <img src="<%= logo %>" alt="Image" style="width: auto; height: auto; border-radius: 10px;">
+                                        </div>
+                                    </div>
+                                    
+                                </div>					                           
+                            </div><!-- item-->
+                        </div>
+                    </div>
+                </div>            
+            </section>
+
+            <section class="tf-section live-auctions home7">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading-live-auctions">
+                                <h2 class="tf-title pb-22">
+                                    Popular Anime</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="swiper-container show-shadow carousel10 pad-t-17 auctions">
+                                <div class="swiper-wrapper">
+                                    
+                                        <% popular.forEach(popularAnime => { %>
+                                            <div class="swiper-slide">
+                                            <div class="slider-item">										
+                                                <div class="sc-card-product menu_card style-h7">
+                                                    <div class="card-media">
+                                                        <a href="<%= popularAnime.picture %>"><img src="<%= popularAnime.picture %>" alt="Image"></a>
+                                                    </div>
+                                                    <div class="card-title">
+                                                        <h5><a href="/anime/<%= popularAnime.id %>"><%= popularAnime.title || 'No Title' %></a></h5>
+                                                    </div>
+                                                    <div class="meta-info">
+                                                        <div class="tags"><%= popularAnime.type %></div>
+                                                    </div>
+                                                </div>    	
+                                            </div><!-- item-->
+                                        </div>
+                                        <% }) %>
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tf-section top-seller home7 bg-style">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="heading-live-auctions">
+                                <h2 class="tf-title pb-23">
+                                    Top Messagers</h2>
+                            </div>
+                            <div class="flat-tabs seller-tab style2">
+                                <div class="content-tab mg-t-16">
+                                    <div class="content-inner">
+                                        <div class="tf-box">
+                                            <div class="box-item">
+                                                <% top_messages.forEach(top_messages => { %>
+                                                    <div class="sc-author-box style-3">
+                                                        <div class="author-style2 flex">
+                                                            <div class="author-avatar">
+                                                                <a href="<%= top_messages.avatar %>">
+                                                                    <img src="<%= top_messages.avatar %>" alt="Image" class="avatar">
+                                                                </a>
+                                                            </div>
+                                                            <div class="author-infor">
+                                                                <h5><a href="/user/<%= top_messages.userId %>"><%= top_messages.displayName || top_messages.username %></a></h5>
+                                                                <div class="tag">@<%= top_messages.username %></div>
+                                                                <span class="price"><%= top_messages. messages %></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <% }) %>
+                                                
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>     
+            </section>
+
+            <section class="tf-section live-auctions top-picks style3 home7 mobie-pb-70">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading-live-auctions mg-bt-24">
+                                <h2 class="tf-title">
+                                    Top Airing
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="top-pick-box">
+                                <% topAiring.forEach(top_airing => { %>
+                                    <div class="sc-card-product menu_card style-h7">
+                                        <div class="card-media">
+                                            <a href="/anime/<%= top_airing.id %>"><img src="<%= top_airing.picture %>" alt="Image"></a>
+                                        </div>
+                                        <div class="card-title">
+                                            <h5><a href="/anime/<%= top_airing.id %>"><%= top_airing.englishTitle %></a></h5>
+                                        </div>
+                                        <div class="meta-info">
+                                            <div class="tags"><%= top_airing.type %></div>
+                                        </div>
+                                        <div class="card-bottom">
+                                            <% if (top_airing.trailer) { %>
+                                                <a href="<%= top_airing.trailer %>" class="sc-button fl-button pri-3"><span>Watch Trailer</span></a>
+                                            <% } %>      
+                                        </div>
+                                    </div>
+                                <% }) %> 
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <%- include ("./__templates__/footer.ejs") %><!-- /#footer -->
+        </div>
+        <!-- /#page -->
+
+       
+    </div>
+    <!-- /#wrapper -->
+
+   
+
+    <!-- Javascript -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.easing.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/plugin.js"></script>
+    <script src="assets/js/shortcodes.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/count-down.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/swiper.js"></script>
+    <script src="assets/js/parallax.js"></script>
+    <script src="assets/js/web3.min.js"></script>
+	<script src="assets/js/moralis.js"></script>
+	<script src="assets/js/nft.js"></script>
+
+</body>
+
+</html>

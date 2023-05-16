@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title><%= discord_client.user.username %> - Anime</title>
+
+    <meta name="author" content="themesflat.com">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+
+    <!-- Reponsive -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <meta property="og:type" content="website">
+	<meta property="og:site_name" content="<%= discord_client.user.username %> Bot - Anime : <%= anime.title %>">
+	<meta property="og:title" content="<%= discord_client.user.username %> Bot - Anime : <%= anime.title %>">
+	<meta property="og:description" content="<%= anime.synopsis.slice(0, 200) %>...">
+	<meta property="og:image" content="<%= anime.picture %>">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="<%= discord_client.user.username %> Bot - Anime : <%= anime.title %>">
+	<meta name="twitter:creator" content="@Nanoha_Live">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta content="#43B581" data-react-helmet="true" name="theme-color" />
+    
+
+</head>
+
+<style>
+    .anime-thumbnail {
+        width: 100%;
+        height: auto;
+    }
+
+    .circle-things {
+        display: inline-block;
+        width: 36px;
+        height: 36px; 
+        line-height: 36px; 
+        border-radius: 50%; 
+        text-align: center; 
+        background-color: var(--primary-color7); 
+        cursor: pointer;
+    }
+
+    .myanimelist {
+        width: 24px; 
+        height: 24px; 
+        border-radius: 50%;
+    }
+</style>
+
+<body class="body header-fixed is_dark">
+
+    <!-- preloade -->
+    <div class="preload preload-container">
+        <div class="preload-logo"></div>
+    </div>
+    <!-- /preload -->
+
+    <div id="wrapper">
+        <div id="page" class="clearfix">
+            <%- include ("./__templates__/header.ejs") %>
+                
+            <!-- title page -->
+            <section class="flat-title-page inner">
+                <div class="overlay"></div>
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="page-title-heading mg-bt-12">
+                                <h1 class="heading text-center"><%= anime.title %></h1>
+                            </div>
+                            <div class="breadcrumbs style2">
+                                <ul>
+                                    <li><a href="/">Home</a></li>
+                                    <li><a href="/anime">Anime</a></li>
+                                    <li><%= anime.title %></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>                    
+            </section>
+
+            <!-- tf item details -->
+            <div class="tf-section tf-item-details">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-xl-6 col-md-12">
+                            <div class="content-left">
+                                <div class="media">
+                                    <img src="<%= anime.picture %>" alt="<%= anime.title %>'s Picture" class="anime-thumbnail">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-12">
+                            <div class="content-right">
+                                <div class="sc-item-details">
+                                    <h2 class="style2"><%= anime.title %></h2>
+                                    <div class="meta-item">
+                                        <div class="left" style="cursor: default;">
+                                            <span class="viewed" style="cursor: default;"><i class="bi bi-play-btn-fill" style="cursor: default;"></i>   <%= anime.episodes %></span>
+                                            <span class="viewed" style="cursor: default;"><i class="bi bi-tv" style="cursor: default;"></i>   <%= anime.type %></span>
+                                        </div>
+                                        
+                                        <div class="right">
+                                            <a href="https://myanimelist.net/anime/<%= anime.id %>" target="_blank" class="circle-things">
+                                                    <img src="/assets/images/MyAnimeList_Logo.svg" alt="MyAnimeList" class="myanimelist">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <% anime.synopsis.split("\n").map(function(paragraph) { %>
+                                        <p><%= paragraph.replace("[Written by MAL Rewrite]", "") %></p>
+                                      <% }); %>
+                                      
+                                    <div class="meta-item-details style2">
+                                        <div class="item meta-price">
+                                            <span class="heading">Popularity</span>
+                                            <div class="price">
+                                                <div class="price-box">
+                                                    <h5> <%= anime.popularity %></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item meta-price">
+                                            <span class="heading">Score</span>
+                                            <div class="price">
+                                                <div class="price-box">
+                                                    <h5> <%= anime.score %></h5>
+                                                    <span class="text"><%= anime.scoreStats.replace("scored by", "") %></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#" data-toggle="modal" data-target="#popup_bid" class="sc-button loadmore style fl-button pri-3"><span>More Details</span></a>
+                                    <div class="flat-tabs themesflat-tabs">
+                                        <ul class="menu-tab tab-title">
+                                            <li class="item-title active">
+                                                <span class="inner">Characters</span>
+                                            </li>
+                                            <li class="item-title">
+                                                <span class="inner">Staff</span>
+                                            </li>
+                                        </ul>
+                                        <div class="content-tab">
+                                            <div class="content-inner tab-content">
+                                                <ul class="bid-history-list">
+                                                    <% anime.characters.forEach(character => { %>
+                                                        <li>
+                                                            <div class="content">
+                                                                <div class="client">
+                                                                    <div class="sc-author-box style-2">
+                                                                        <div class="author-avatar">
+                                                                            <a href="<%= character.picture %>">
+                                                                                <img src="<%= character.picture %>" alt="<%= character.name %>" class="avatar">
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="author-infor">
+                                                                            <div class="name">
+                                                                                <h6><a href="<%= character.link %>"><%= character.name %> </a></h6> <span> <%= character.role %> </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    <% }) %>
+                                                </ul>
+                                            </div>
+                                            <div class="content-inner tab-content">                                               
+                                                <ul class="bid-history-list">
+                                                    <% anime.staff.forEach(staff => { %>
+                                                        <li>
+                                                            <div class="content">
+                                                                <div class="client">
+                                                                    <div class="sc-author-box style-2">
+                                                                        <div class="author-avatar">
+                                                                            
+                                                                            <% if (staff.picture === "https://cdn.myanimelist.net/images/questionmark_23.jpg") { %>
+                                                                                <a href="https://cdn.discordapp.com/attachments/1102713736193650778/1107758918370869420/5342-discordquestion.png">
+                                                                                    <img src="https://cdn.discordapp.com/attachments/1102713736193650778/1107758918370869420/5342-discordquestion.png" alt="<%= staff.name %>" class="avatar">
+                                                                                </a>
+                                                                            <% } else { %>
+                                                                                <a href="<%= staff.picture %>">
+                                                                                    <img src="<%= staff.picture %>" alt="<%= staff.name %>" class="avatar">
+                                                                                </a>
+                                                                            <% } %>
+                                                                            
+                                                                        </div>
+                                                                        <div class="author-infor">
+                                                                            <div class="name">
+                                                                                <h6><a href="<%= staff.link %>"><%= staff.name %> </a></h6> <span> <%= staff.role %> </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    <% }) %>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /tf item details -->
+
+            <!-- Footer -->
+            <%- include ("./__templates__/footer.ejs") %>
+            <!-- /#footer -->
+        <!-- Bottom -->
+        </div>
+        <!-- /#page -->
+        <!-- Modal Popup Bid -->
+        <div class="modal fade popup" id="popup_bid" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="modal-body space-y-20 pd-40">
+                        <h3><%= anime.title %> Details</h3>
+                        <p class="text-center"><%= anime.japaneseTitle %><p>
+                       
+                        <div class="hr"></div>
+                        <div class="d-flex justify-content-between">
+                            <p> Premiered:</p>
+                            <p class="text-right price color-popup"> <%= anime.premiered %> </p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p> Source:</p>
+                            <p class="text-right price color-popup"> <%= anime.source %> </p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p> Aired:</p>
+                            <p class="text-right price color-popup"> <%= anime.aired %> </p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p> Broadcast:</p>
+                            <p class="text-right price color-popup"> <%= anime.broadcast %> </p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p> Status:</p>
+                            <p class="text-right price color-popup"> <%= anime.status %> </p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p> Genres:</p>
+                            <p class="text-right price color-popup"> <%= anime.genres.join(", ") %> </p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p> Duration:</p>
+                            <p class="text-right price color-popup"> <%= anime.duration %> </p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p> Studios:</p>
+                            <p class="text-right price color-popup"> <%= anime.studios.join(", ") %> </p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p> Rating:</p>
+                            <p class="text-right price color-popup"> <%= anime.rating %> </p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+    <!-- /#wrapper -->
+
+   
+
+    <!-- Javascript -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.easing.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/wow.min.js"></script>
+    <script src="/assets/js/count-down.js"></script>
+    <script src="/assets/js/plugin.js"></script>
+    <script src="/assets/js/swiper-bundle.min.js"></script>
+    <script src="/assets/js/swiper.js"></script>
+    <script src="/assets/js/shortcodes.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/web3.min.js"></script>
+	<script src="/assets/js/moralis.js"></script>
+	<script src="/assets/js/nft.js"></script>
+
+    <script defer>
+        (async function() {
+          const image = document.querySelector('.anime-thumbnail');
+          const src = image.src;
+          const response = await fetch(src);
+          const blob = await response.blob();
+          const file = new File([blob], "image.jpg", { type: blob.type });
+          const url = URL.createObjectURL(file);
+          image.src = url;
+        })();
+      </script>      
+
+</body>
+
+</html>

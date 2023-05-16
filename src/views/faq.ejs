@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>
+        <%= discord_client.user.username %> - Faq
+    </title>
+
+    <meta name="author" content="themesflat.com">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+
+    <!-- Reponsive -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="<%= discord_client.user.username %> Bot - Faq">
+    <meta property="og:title" content="<%= discord_client.user.username %> Bot - Faq">
+    <meta property="og:description" content="Frequently Asked Questions about <%= discord_client.user.username %> Bot">
+    <meta property="og:image" content="https://media.tenor.com/JEFQ_QZs8SEAAAAC/well-think.gif">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="<%= discord_client.user.username %> Bot - Faq">
+    <meta name="twitter:creator" content="@Nanoha_Live">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta content="#43B581" data-react-helmet="true" name="theme-color" />
+
+
+</head>
+
+<style>
+    .command {
+        color: #ffffff;
+        background-color: rgba(114, 137, 218, 0.1);
+        border-radius: 3px;
+        padding: 3px 6px;
+        font-size: 14px;
+        line-height: 1.5;
+        white-space: nowrap;
+        vertical-align: baseline;
+        font-weight: 400;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    }
+</style>
+
+<body class="body header-fixed is_dark">
+
+    <!-- preloade -->
+    <div class="preload preload-container">
+        <div class="preload-logo"></div>
+    </div>
+    <!-- /preload -->
+
+    <div id="wrapper">
+        <div id="page" class="clearfix">
+            <%- include ("./__templates__/header.ejs") %>
+
+                <!-- title page -->
+                <section class="flat-title-page inner">
+                    <div class="overlay"></div>
+                    <div class="themesflat-container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="page-title-heading mg-bt-12">
+                                    <h1 class="heading text-center">FAQ</h1>
+                                </div>
+                                <div class="breadcrumbs style2">
+                                    <ul>
+                                        <li><a href="/">Home</a></li>
+                                        <li>FAQ</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- flat-accordion -->
+                <section class="tf-section wrap-accordion">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 class="tf-title-heading ct style-2 fs-30 mg-bt-10">
+                                    Frequently Asked Questions
+                                </h2>
+                                <h5 class="sub-title help-center mg-bt-32 ">
+                                    Here are some of the most common questions we get asked. If you can't find what you
+                                    are looking for, please join our <a href="/discord" style="color: hotpink;">Discord
+                                        Server</a> and ask in the support channel.
+                                </h5>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="flat-accordion2">
+                                    <div class="flat-toggle2" id="what">
+                                        <h6 class="toggle-title active">What is <%= discord_client.user.username %> Bot?
+                                        </h6>
+                                        <div class="toggle-content">
+                                            <p>
+                                                Nanoha Bot is a versatile Discord bot designed specifically for Anime
+                                                and Manga enthusiasts, offering an extensive range of features to
+                                                enhance your community's anime-related experience.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="flat-toggle2" id="invite">
+                                        <h6 class="toggle-title">How do I add <%= discord_client.user.username %> Bot to
+                                                my server?</h6>
+                                        <div class="toggle-content">
+                                            <p>
+                                                You can add <%= discord_client.user.username %> Bot to your server by
+                                                    clicking <a href="/invite" style="color: hotpink;">here</a>.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="flat-toggle2" id="commands">
+                                        <h6 class="toggle-title">How do I use <%= discord_client.user.username %> Bot?
+                                        </h6>
+                                        <div class="toggle-content">
+                                            <p>
+                                                You can view a list of commands by typing <code class="command">/help</code> in your
+                                                server.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="flat-toggle2" id="prefix">
+                                        <h6 class="toggle-title">How do I change the prefix?</h6>
+                                        <div class="toggle-content">
+                                            <p>You can not change the prefix. We use the slash command system, so you
+                                                don't need to use a prefix.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flat-toggle2" id="open-source">
+                                        <h6 class="toggle-title">Are you open source?</h6>
+                                        <div class="toggle-content">
+                                            <p>Yes, you can view our source code on by clicking the image below.</p>
+                                            <img src="https://socialify.git.ci/0xhylia/Basic-Webserver/image?font=Source%20Code%20Pro&language=1&name=1&pattern=Floating%20Cogs&theme=Dark" alt="GitHub Repo stars" id="github-repo" data-total-stars="1" data-stars="1" style="max-width:100%;">
+                                        </div>
+                                    </div>
+                                    <div class="flat-toggle2" id="api">
+                                        <h6 class="toggle-title">Do you have a public api?</h6>
+                                        <div class="toggle-content">
+                                            <p>Currenly, we do not have a public api. We are working on one, and it
+                                                should be released soon.</p>
+
+                                            <p id="api-status"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- flat-accordion -->
+
+
+                <!-- Footer -->
+                <%- include ("./__templates__/footer.ejs") %>
+                    <!-- /#footer -->
+                    <!-- Bottom -->
+        </div>
+        <!-- /#page -->
+    </div>
+    <!-- /#wrapper -->
+
+
+
+    <!-- Javascript -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.easing.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/wow.min.js"></script>
+    <script src="/assets/js/count-down.js"></script>
+    <script src="/assets/js/plugin.js"></script>
+    <script src="/assets/js/swiper-bundle.min.js"></script>
+    <script src="/assets/js/swiper.js"></script>
+    <script src="/assets/js/shortcodes.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/web3.min.js"></script>
+    <script src="/assets/js/moralis.js"></script>
+    <script src="/assets/js/nft.js"></script>
+
+    <script>
+        const githubrepo = document.getElementById('github-repo');
+
+        githubrepo.addEventListener('click', () => {
+            window.open('https://oss.nanoha.live', '_blank');
+        });
+    </script>
+
+    <script>
+        const apiStatus = document.getElementById('api-status');
+
+        fetch('/api/v1/status')
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'online') {
+                    apiStatus.innerHTML = 'The API is currently online. <a href="/api/v1/docs" style="color: hotpink;">View Documentation</a>';
+                } else {
+                    apiStatus.innerHTML = `The API is currently offline. </br> It will be up on: <strong>${data.date}</strong> UTC`;
+                }
+            });
+    </script>
+
+</body>
+
+</html>
