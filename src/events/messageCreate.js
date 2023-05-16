@@ -5,33 +5,30 @@ module.exports = {
     name: 'messageCreate',
     async execute(message) {
         const { client, author, guild, channel, content } = message;
+        
+            // const embed = new MessageEmbed()
+            //     .setTitle("Donate")
+            //     .setDescription("You can donate to the bot by clicking the buttons below.")
+            //     .setColor("RANDOM")
+            //     .setTimestamp()
 
-        if (message.content === "^^donate") {
-            const embed = new MessageEmbed()
-                .setTitle("Donate")
-                .setDescription("You can donate to the bot by clicking the buttons below.")
-                .setColor("RANDOM")
-                .setTimestamp()
+            // const row = new MessageActionRow()
+            //     .addComponents(
+            //         new MessageButton()
+            //             .setLabel("Paypal")
+            //             .setStyle("LINK")
+            //             .setURL("https://www.paypal.com/paypalme/stelladevlol"),
+            //         new MessageButton()
+            //             .setLabel("Ko-fi")
+            //             .setStyle("LINK")
+            //             .setURL("https://ko-fi.com/0xhylia"),
+            //         new MessageButton()
+            //             .setLabel("Patreon")
+            //             .setStyle("LINK")
+            //             .setURL("https://www.patreon.com/0xhylia")
+            //     )
 
-            const row = new MessageActionRow()
-                .addComponents(
-                    new MessageButton()
-                        .setLabel("Paypal")
-                        .setStyle("LINK")
-                        .setURL("https://www.paypal.com/paypalme/stelladevlol"),
-                    new MessageButton()
-                        .setLabel("Ko-fi")
-                        .setStyle("LINK")
-                        .setURL("https://ko-fi.com/0xhylia"),
-                    new MessageButton()
-                        .setLabel("Patreon")
-                        .setStyle("LINK")
-                        .setURL("https://www.patreon.com/0xhylia")
-                )
-
-            channel.send({ embeds: [embed], components: [row] });
-
-        }
+            // channel.send({ embeds: [embed], components: [row] });
 
         if (author.bot) return;
 
