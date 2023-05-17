@@ -2,7 +2,7 @@
 
 REM Set your GitHub username and repository URL
 set USERNAME=0xhylia
-set REPO_URL=https://github.com/LabsStar/nanoha-bot.git
+set REPO_URL=git@github.com:LabsStar/nanoha-bot.git
 
 REM Set the branch you want to push to
 set BRANCH=docs
