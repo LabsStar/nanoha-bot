@@ -1,6 +1,6 @@
 <h1 align="center" id="title">Nanoha Bot</h1>
 
-<p align="center"><img src="https://socialify.git.ci/0xhylia/Basic-Webserver/image?font=Source%20Code%20Pro&amp;language=1&amp;name=1&amp;pattern=Floating%20Cogs&amp;theme=Dark" alt="project-image"></p>
+<p align="center"><img src="https://socialify.git.ci/LabsStar/nanoha-bot/image?font=Source%20Code%20Pro&amp;language=1&amp;name=1&amp;pattern=Floating%20Cogs&amp;theme=Dark" alt="project-image"></p>
 
 <p id="description">Nanoha is a discord bot focused on Anime and Manga with a lot of features.</p>
 
