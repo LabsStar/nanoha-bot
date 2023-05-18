@@ -13,14 +13,14 @@ module.exports = {
     category: "Info",
     async execute(interaction) {
         const github_repo = await octokit.repos.get({
-            owner: "0xhylia",
-            repo: "Basic-Webserver",
+            owner: "LabsStar",
+            repo: "nanoha-bot",
         });
 
         const embed = new MessageEmbed()
             .setTitle("Open Source")
             .setDescription(`You can find the open source code for this bot [here](${github_repo.data.html_url}).`)
-            .setImage("https://socialify.git.ci/0xhylia/Basic-Webserver/image?font=Source%20Code%20Pro&language=1&name=1&pattern=Floating%20Cogs&theme=Dark")
+            .setImage("https://socialify.git.ci/LabsStar/nanoha-bot/image?font=Source%20Code%20Pro&language=1&name=1&pattern=Floating%20Cogs&theme=Dark")
             .setColor("RANDOM")
             .setTimestamp()
 
