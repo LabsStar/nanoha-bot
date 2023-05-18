@@ -23,8 +23,8 @@ module.exports = {
         });
 
         const githubContributors = await octokit.request("GET /repos/{owner}/{repo}/contributors", {
-            owner: "0xhylia",
-            repo: "Basic-Webserver",
+            owner: "LabsStar",
+            repo: "nanoha-bot",
         });
 
         const contributors = githubContributors.data.map(c => {
