@@ -16,7 +16,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 client.commands = new Collection();
 
-const Logger = require("./Utils/Logger.js");
+const Logger = require("./utils/Logger.js");
 const logger = new Logger();
 
 client.logger = logger;
