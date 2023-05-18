@@ -10,7 +10,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("oss")
         .setDescription("Check out the open source code for this bot."),
-    category: "User",
+    category: "Info",
     async execute(interaction) {
         const github_repo = await octokit.repos.get({
             owner: "0xhylia",
